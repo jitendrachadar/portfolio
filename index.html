@@ -1,47 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Portfolio - Jitendra Chadar</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-  <script defer>
-    function openModal(src) {
-      const modal = document.getElementById("imageModal");
-      const modalImg = document.getElementById("modalImg");
-      modalImg.src = src;
-      modal.classList.remove("hidden");
+  <link rel="icon" href="img/profile-pic.png" type="image/png">
+  <style>
+    .hidden-gallery {
+      display: none;
     }
-
-    function closeModal() {
-      const modal = document.getElementById("imageModal");
-      modal.classList.add("hidden");
-    }
-
-    // Close the modal on ESC key press
-    document.addEventListener("keydown", (event) => {
-      if (event.key === "Escape") {
-        closeModal();
-      }
-    });
-  </script>
+  </style>
 </head>
+
 <body class="bg-gray-900 text-gray-300 font-sans">
 
-  <!-- Hero Section (Merged with About Section) -->
-  <section class="min-h-screen flex flex-col md:flex-row items-center justify-center bg-black text-center md:text-left px-6">
+  <!-- Hero Section (About Me) -->
+  <section class="flex flex-col md:flex-row items-center justify-center bg-black text-center md:text-left p-6">
     <!-- Column 1: Image, Name, Title -->
     <div class="md:w-1/2 flex flex-col items-center">
-      <img src="img/profile-pic.png" alt="Jitendra Chadar" class="w-40 h-40 rounded-full mb-6 border-4 border-gray-700 shadow-lg">
+      <img src="img/profile-pic.png" alt="Jitendra Chadar"
+        class="w-40 h-40 rounded-full mb-6 border-4 border-gray-700 shadow-lg">
       <h1 class="text-4xl font-bold text-gray-100">Jitendra Chadar</h1>
       <p class="text-lg mt-2 text-gray-400">Software Developer</p>
     </div>
-
     <!-- Column 2: About Me, Skills -->
     <div class="md:w-1/2 mt-8 md:mt-0">
       <h2 class="text-3xl font-semibold text-gray-100 mb-4">About Me</h2>
-      <p class="text-gray-400 max-w-lg">I'm a software developer with 5+ years of experience in Java backend development and database maintenance with PLSQL. I also have a passion for building productivity-enhancing tool-based websites and Chrome extensions.</p>
-      
+      <p class="text-gray-400 max-w-lg">I'm a software developer with 5+ years of experience in Java backend
+        development, database maintenance with PLSQL, and a passion for building productivity tools and Chrome
+        extensions.</p>
       <div class="flex flex-wrap justify-center md:justify-start gap-4 mt-6">
         <span class="border border-gray-600 text-gray-300 px-4 py-2 rounded-lg text-sm">Java</span>
         <span class="border border-gray-600 text-gray-300 px-4 py-2 rounded-lg text-sm">Spring Boot</span>
@@ -55,42 +44,98 @@
 
   <!-- Projects Section -->
   <section id="projects" class="py-16 bg-gray-900">
-    <div class="container mx-auto px-6 text-center">
-      <h2 class="text-3xl font-semibold text-gray-100 mb-10">Projects</h2>
+    <div class="container mx-auto px-6 md:w-2/3">
+      <h2 class="text-3xl font-semibold text-gray-100 mb-10 text-center">Projects</h2>
 
-      <!-- Project 1 -->
-      <div class="bg-gray-800 rounded-lg p-6 mb-10 shadow-lg">
-        <h3 class="text-2xl font-bold text-gray-100">QuickClip - Chrome Extension</h3>
-        <p class="text-gray-400 mt-2">QuickClip allows users to clip selected text from web pages and save it as a PDF, retaining the original styling and layout. Perfect for research and documentation tasks.</p>
-        <div class="grid grid-cols-2 md:grid-cols-3 gap-4 mt-4">
-          <img src="img/project1-img1.jpg" alt="QuickClip Snippet 1" class="w-full rounded-lg shadow cursor-pointer" onclick="openModal(this.src)">
-          <img src="img/project1-img2.jpg" alt="QuickClip Snippet 2" class="w-full rounded-lg shadow cursor-pointer" onclick="openModal(this.src)">
-          <img src="img/project1-img3.jpg" alt="QuickClip Snippet 3" class="w-full rounded-lg shadow cursor-pointer" onclick="openModal(this.src)">
-          <img src="img/project1-img4.jpg" alt="QuickClip Snippet 4" class="w-full rounded-lg shadow cursor-pointer" onclick="openModal(this.src)">
-          <img src="img/project1-img5.jpg" alt="QuickClip Snippet 5" class="w-full rounded-lg shadow cursor-pointer" onclick="openModal(this.src)">
-          <img src="img/project1-img6.jpg" alt="QuickClip Snippet 6" class="w-full rounded-lg shadow cursor-pointer" onclick="openModal(this.src)">
+      <div class="bg-gray-800 rounded-lg shadow-lg mb-10">
+        <!-- Row 1: Project Header -->
+        <div class="flex flex-col md:flex-row items-center p-6">
+          <div class="md:w-2/4 flex flex-col text-center justify-center items-center mb-4 md:mb-0 gap-2">
+            <img src="img/project1-logo.png" alt="Word Search Maker Logo" class="w-20 h-20 rounded-full shadow-lg">
+            <h3 class="text-4xl font-bold text-gray-100">QuickClip - Chrome Extension</h3>
+          </div>
+
+          <!-- Column 2: Project Description -->
+          <div class="md:w-2/4">
+            <p class="text-gray-300 mt-2">QuickClip allows users to clip selected text from web pages and save it as a
+              PDF, retaining the original styling and layout. Perfect for research and documentation tasks.</p>
+            <p class="text-gray-300 mt-2">Usage: Install the extension, select text on a webpage, right-click, and
+              choose "Clip to PDF".</p>
+          </div>
+        </div>
+
+        <!-- Row 2: Project Gallery & Links -->
+        <div id="project-gallery-1" class="hidden-gallery opacity-0 transition-all duration-500 ease-in-out p-6">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <img src="img/project1-img1.jpg" alt="QuickClip Snippet 1" class="w-full rounded-lg shadow">
+            <img src="img/project1-img2.jpg" alt="QuickClip Snippet 2" class="w-full rounded-lg shadow">
+            <img src="img/project1-img3.jpg" alt="QuickClip Snippet 3" class="w-full rounded-lg shadow">
+            <img src="img/project1-img4.jpg" alt="QuickClip Snippet 4" class="w-full rounded-lg shadow">
+            <img src="img/project1-img5.jpg" alt="QuickClip Snippet 5" class="w-full rounded-lg shadow">
+            <img src="img/project1-img6.jpg" alt="QuickClip Snippet 6" class="w-full rounded-lg shadow">
+          </div>
+        </div>
+
+        <!-- Toggle Button -->
+        <div class="relative">
+          <button onclick="toggleGallery('project-gallery-1')"
+            class="bg-gray-700 hover:bg-gray-600 text-gray-100 w-full py-3 rounded-b-lg transition-colors duration-300">
+            Show Images
+          </button>
         </div>
       </div>
 
-      <!-- Project 2 -->
-      <!-- <div class="bg-gray-800 rounded-lg p-6 mb-10 shadow-lg">
-        <h3 class="text-2xl font-bold text-gray-100">Project Two</h3>
-        <p class="text-gray-400 mt-2">A brief description of this project, its objectives, and any key features. This is the perfect place to add more projects as you complete them.</p>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
-          <img src="project2-img1.jpg" alt="Project Two Snippet 1" class="w-full rounded-lg shadow cursor-pointer" onclick="openModal(this.src)">
-          <img src="project2-img2.jpg" alt="Project Two Snippet 2" class="w-full rounded-lg shadow cursor-pointer" onclick="openModal(this.src)">
+      <div class="bg-gray-800 rounded-lg shadow-lg mb-10">
+        <!-- Row 1: Project Header -->
+        <div class="flex flex-col md:flex-row items-center p-6">
+          <!-- Column 1: Project Logo, Title, and Website Link (Aligned Vertically) -->
+          <div class="md:w-2/4 flex flex-col text-center justify-center items-center mb-4 md:mb-0 gap-2">
+            <!-- Project Logo -->
+            <img src="img/project2-logo.png" alt="Word Search Maker Logo" class="w-2/4 shadow-lg mb-3">
+
+            <!-- Project Title -->
+            <h3 class="text-4xl font-bold text-gray-100">Word Search Puzzle Generator Tool</h3>
+
+            <!-- Project Website Link -->
+            <a href="https://wordsearchmaker.pro" target="_blank" class="text-yellow-400 hover:text-yellow-500 mt-3">
+              Checkout the tool
+            </a>
+          </div>
+
+          <!-- Column 2: Project Description -->
+          <div class="md:w-2/4">
+            <p class="text-gray-300 mt-2">
+              A powerful tool to generate custom word search puzzles with your own word lists. Easily download puzzles
+              in PDF format with no watermarks.
+            </p>
+            <p class="text-gray-300 mt-2">
+              Features: Generate multiple puzzles at once, customizable word lists, and downloadable PDFs. Perfect for
+              educators and puzzle enthusiasts.
+            </p>
+          </div>
         </div>
-      </div> -->
+
+        <!-- Row 2: Project Gallery & Links -->
+        <div id="project-gallery-2" class="hidden-gallery opacity-0 transition-all duration-500 ease-in-out p-6">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <img src="img/project2-img1.png" alt="Word Search Maker Snippet 1" class="w-full rounded-lg shadow">
+            <img src="img/project2-img2.png" alt="Word Search Maker Snippet 2" class="w-full rounded-lg shadow">
+            <img src="img/project2-img3.png" alt="Word Search Maker Snippet 3" class="w-full rounded-lg shadow">
+            <img src="img/project2-img4.png" alt="Word Search Maker Snippet 4" class="w-full rounded-lg shadow">
+          </div>
+        </div>
+
+        <!-- Toggle Button -->
+        <div class="relative">
+          <button onclick="toggleGallery('project-gallery-2')"
+            class="bg-gray-700 hover:bg-gray-600 text-gray-100 w-full py-3 rounded-b-lg transition-colors duration-300">
+            Show Images
+          </button>
+        </div>
+      </div>
+
     </div>
   </section>
-
-  <!-- Image Modal -->
-  <div id="imageModal" class="fixed inset-0 bg-black bg-opacity-75 hidden items-center justify-center z-50">
-    <div class="relative max-w-5xl mx-auto px-4">
-      <img id="modalImg" src="" alt="Project Image" class="rounded-lg shadow-lg max-w-full max-h-[90vh]">
-      <button onclick="closeModal()" class="absolute top-2 right-2 text-white text-2xl font-bold bg-gray-800 rounded-full w-8 h-8 flex items-center justify-center">&times;</button>
-    </div>
-  </div>
 
   <!-- Contact Section -->
   <section id="contact" class="py-16 bg-gray-900">
@@ -98,7 +143,8 @@
       <h2 class="text-3xl font-semibold text-gray-100 mb-6">Contact</h2>
       <p class="text-gray-400 mb-4">I'm open to freelance work and collaborative projects. Feel free to reach out!</p>
       <p class="text-gray-300">
-        Email: <a href="mailto:jitendrachadar.jc@gmail.com" class="text-blue-400 hover:underline">jitendrachadar.jc@gmail.com</a>
+        Email: <a href="mailto:jitendrachadar.jc@gmail.com"
+          class="text-blue-400 hover:underline">jitendrachadar.jc@gmail.com</a>
       </p>
     </div>
   </section>
@@ -110,5 +156,21 @@
     </div>
   </footer>
 
+  <script>
+    function toggleGallery(id) {
+      const gallery = document.getElementById(id);
+
+      // Toggle visibility and opacity for smooth transitions
+      if (gallery.classList.contains('hidden-gallery')) {
+        gallery.classList.remove('hidden-gallery');
+        setTimeout(() => gallery.classList.remove('opacity-0'), 10);
+      } else {
+        gallery.classList.add('opacity-0');
+        setTimeout(() => gallery.classList.add('hidden-gallery'), 500); // Wait for transition to complete
+      }
+    }
+  </script>
+
 </body>
+
 </html>
