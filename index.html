@@ -11,17 +11,32 @@
     .hidden-gallery {
       display: none;
     }
+
+    #lightbox {
+        transition: opacity 0.3s ease;
+    }
+    
+    #lightbox-img {
+        transform: scale(0.9);
+        transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+    
+    #lightbox.open #lightbox-img {
+        transform: scale(1);
+        opacity: 1;
+    }
+  
   </style>
 </head>
 
 <body class="bg-gray-900 text-gray-300 font-sans">
 
   <!-- Hero Section (About Me) -->
-  <section class="flex flex-col md:flex-row items-center justify-center bg-black text-center md:text-left p-6">
+  <section class="flex flex-col md:flex-row items-center justify-center text-center md:text-left p-6" style="background-color: rgb(1 16 35);">
     <!-- Column 1: Image, Name, Title -->
     <div class="md:w-1/2 flex flex-col items-center">
       <img src="img/profile-pic.png" alt="Jitendra Chadar"
-        class="w-40 h-40 rounded-full mb-6 border-4 border-gray-700 shadow-lg">
+        class="w-60 h-60 rounded-full mb-6 border-4 border-gray-800 shadow-lg">
       <h1 class="text-4xl font-bold text-gray-100">Jitendra Chadar</h1>
       <p class="text-lg mt-2 text-gray-400">Software Developer</p>
     </div>
@@ -67,12 +82,12 @@
         <!-- Row 2: Project Gallery & Links -->
         <div id="project-gallery-1" class="hidden-gallery opacity-0 transition-all duration-500 ease-in-out p-6">
           <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <img src="img/project1-img1.jpg" alt="QuickClip Snippet 1" class="w-full rounded-lg shadow">
-            <img src="img/project1-img2.jpg" alt="QuickClip Snippet 2" class="w-full rounded-lg shadow">
-            <img src="img/project1-img3.jpg" alt="QuickClip Snippet 3" class="w-full rounded-lg shadow">
-            <img src="img/project1-img4.jpg" alt="QuickClip Snippet 4" class="w-full rounded-lg shadow">
-            <img src="img/project1-img5.jpg" alt="QuickClip Snippet 5" class="w-full rounded-lg shadow">
-            <img src="img/project1-img6.jpg" alt="QuickClip Snippet 6" class="w-full rounded-lg shadow">
+            <img src="img/project1-img1.jpg" alt="QuickClip Snippet 1" class="w-full rounded-lg shadow cursor-pointer" onclick="openLightbox(this)">
+            <img src="img/project1-img2.jpg" alt="QuickClip Snippet 2" class="w-full rounded-lg shadow cursor-pointer" onclick="openLightbox(this)">
+            <img src="img/project1-img3.jpg" alt="QuickClip Snippet 3" class="w-full rounded-lg shadow cursor-pointer" onclick="openLightbox(this)">
+            <img src="img/project1-img4.jpg" alt="QuickClip Snippet 4" class="w-full rounded-lg shadow cursor-pointer" onclick="openLightbox(this)">
+            <img src="img/project1-img5.jpg" alt="QuickClip Snippet 5" class="w-full rounded-lg shadow cursor-pointer" onclick="openLightbox(this)">
+            <img src="img/project1-img6.jpg" alt="QuickClip Snippet 6" class="w-full rounded-lg shadow cursor-pointer" onclick="openLightbox(this)">
           </div>
         </div>
 
@@ -118,10 +133,10 @@
         <!-- Row 2: Project Gallery & Links -->
         <div id="project-gallery-2" class="hidden-gallery opacity-0 transition-all duration-500 ease-in-out p-6">
           <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <img src="img/project2-img1.png" alt="Word Search Maker Snippet 1" class="w-full rounded-lg shadow">
-            <img src="img/project2-img2.png" alt="Word Search Maker Snippet 2" class="w-full rounded-lg shadow">
-            <img src="img/project2-img3.png" alt="Word Search Maker Snippet 3" class="w-full rounded-lg shadow">
-            <img src="img/project2-img4.png" alt="Word Search Maker Snippet 4" class="w-full rounded-lg shadow">
+            <img src="img/project2-img1.png" alt="Word Search Maker Snippet 1" class="w-full rounded-lg shadow cursor-pointer" onclick="openLightbox(this)">
+            <img src="img/project2-img2.png" alt="Word Search Maker Snippet 2" class="w-full rounded-lg shadow cursor-pointer" onclick="openLightbox(this)">
+            <img src="img/project2-img3.png" alt="Word Search Maker Snippet 3" class="w-full rounded-lg shadow cursor-pointer" onclick="openLightbox(this)">
+            <img src="img/project2-img4.png" alt="Word Search Maker Snippet 4" class="w-full rounded-lg shadow cursor-pointer" onclick="openLightbox(this)">
           </div>
         </div>
 
@@ -156,6 +171,11 @@
     </div>
   </footer>
 
+  <div id="lightbox" class="fixed inset-0 bg-black bg-opacity-80 hidden flex items-center justify-center z-50">
+      <span class="absolute top-5 right-5 text-white text-3xl cursor-pointer" onclick="closeLightbox()">&times;</span>
+      <img id="lightbox-img" class="max-w-full max-h-full rounded shadow-lg">
+  </div>
+
   <script>
     function toggleGallery(id) {
       const gallery = document.getElementById(id);
@@ -168,6 +188,21 @@
         gallery.classList.add('opacity-0');
         setTimeout(() => gallery.classList.add('hidden-gallery'), 500); // Wait for transition to complete
       }
+    }
+
+    function openLightbox(image) {
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        
+        lightboxImg.src = image.src;
+        lightbox.classList.remove('hidden');
+        lightbox.classList.add('open');
+    }
+    
+    function closeLightbox() {
+        const lightbox = document.getElementById('lightbox');
+        lightbox.classList.add('hidden');
+        lightbox.classList.remove('open');
     }
   </script>
 
