@@ -13,35 +13,42 @@
     }
 
     #lightbox {
-        transition: opacity 0.3s ease;
+      transition: opacity 0.3s ease;
     }
-    
+
     #lightbox-img {
-        transform: scale(0.9);
-        transition: transform 0.3s ease, opacity 0.3s ease;
+      transform: scale(0.9);
+      transition: transform 0.3s ease, opacity 0.3s ease;
     }
-    
+
     #lightbox.open #lightbox-img {
-        transform: scale(1);
-        opacity: 1;
+      transform: scale(1);
+      opacity: 1;
     }
-  
+
+    h2.section-active {
+      border-width: 2px;
+      border-style: 'solid';
+      background: #1f2937;
+    }
+
   </style>
 </head>
 
 <body class="bg-gray-900 text-gray-300 font-sans">
 
-  <!-- Hero Section (About Me) -->
-  <section class="flex flex-col md:flex-row items-center justify-center text-center md:text-left p-6" style="background-color: rgb(1 16 35);">
-    <!-- Column 1: Image, Name, Title -->
-    <div class="md:w-1/2 flex flex-col items-center">
+
+  <section class="flex flex-col md:flex-row items-center justify-center text-center md:text-left p-6"
+    style="background-color: rgb(1 16 35);">
+
+    <div class="md:w-1/3 flex flex-col items-center">
       <img src="img/profile-pic.png" alt="Jitendra Chadar"
-        class="w-60 h-60 rounded-full mb-6 border-4 border-gray-800 shadow-lg">
+        class="w-40 h-40 rounded-full mb-6 border-4 border-gray-800 shadow-lg">
       <h1 class="text-4xl font-bold text-gray-100">Jitendra Chadar</h1>
       <p class="text-lg mt-2 text-gray-400">Software Developer</p>
     </div>
-    <!-- Column 2: About Me, Skills -->
-    <div class="md:w-1/2 mt-8 md:mt-0">
+
+    <div class="md:w-1/3 mt-8 md:mt-0">
       <h2 class="text-3xl font-semibold text-gray-100 mb-4">About Me</h2>
       <p class="text-gray-400 max-w-lg">I'm a software developer with 5+ years of experience in Java backend
         development, database maintenance with PLSQL, and a passion for building productivity tools and Chrome
@@ -58,94 +65,182 @@
   </section>
 
   <!-- Projects Section -->
-  <section id="projects" class="py-16 bg-gray-900">
+  <section  class="py-16 bg-gray-900">
     <div class="container mx-auto px-6 md:w-2/3">
-      <h2 class="text-3xl font-semibold text-gray-100 mb-10 text-center">Projects</h2>
+      <div class="flex flex-row mb-8 justify-evenly">
+        <h2 id="projects" class="container section-active p-2 hover:text-yellow-400 rounded-lg rounded-b-none border-b-2 border-gray-600
+          text-xl font-semibold text-gray-100 text-center"
+          onclick="toggleSection(this)">
+          Projects
+        </h2>
+        <h2 id="more-about" class="container p-2 hover:text-yellow-400 rounded-lg rounded-b-none border-b-2 border-gray-600
+          text-xl font-semibold text-gray-100 text-center"
+          onclick="toggleSection(this)">
+          More About Me
+        </h2>
+      </div>
 
-      <div class="bg-gray-800 rounded-lg shadow-lg mb-10">
-        <!-- Row 1: Project Header -->
-        <div class="flex flex-col md:flex-row items-center p-6">
-          <div class="md:w-2/4 flex flex-col text-center justify-center items-center mb-4 md:mb-0 gap-2">
-            <img src="img/project1-logo.png" alt="Word Search Maker Logo" class="w-20 h-20 rounded-full shadow-lg">
-            <h3 class="text-4xl font-bold text-gray-100">QuickClip - Chrome Extension</h3>
+      <div id="projects-tab" class="flex flex-col section-active">
+        <div class="bg-gray-800 rounded-lg shadow-lg mb-10">
+          <!-- Row 1: Project Header -->
+          <div class="flex flex-col md:flex-row items-center p-6">
+            <div class="md:w-2/4 flex flex-col text-center justify-center items-center mb-4 md:mb-0 gap-2">
+              <img src="img/project1-logo.png" alt="Word Search Maker Logo" class="w-20 h-20 rounded-full shadow-lg">
+              <h3 class="text-2xl font-bold text-gray-100">QuickClip - Chrome Extension</h3>
+            </div>
+
+            <!-- Column 2: Project Description -->
+            <div class="md:w-2/4">
+              <p class="text-gray-300 mt-2">QuickClip allows users to clip selected text from web pages and save it as a
+                PDF, retaining the original styling and layout. Perfect for research and documentation tasks.</p>
+              <p class="text-gray-300 mt-2">Usage: Install the extension, select text on a webpage, right-click, and
+                choose "Clip to PDF".</p>
+            </div>
           </div>
 
-          <!-- Column 2: Project Description -->
-          <div class="md:w-2/4">
-            <p class="text-gray-300 mt-2">QuickClip allows users to clip selected text from web pages and save it as a
-              PDF, retaining the original styling and layout. Perfect for research and documentation tasks.</p>
-            <p class="text-gray-300 mt-2">Usage: Install the extension, select text on a webpage, right-click, and
-              choose "Clip to PDF".</p>
+          <!-- Row 2: Project Gallery & Links -->
+          <div id="project-gallery-1" class="hidden-gallery opacity-0 transition-all duration-500 ease-in-out p-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <img src="img/project1-img1.jpg" alt="QuickClip Snippet 1" class="w-full rounded-lg shadow cursor-pointer"
+                onclick="openLightbox(this)">
+              <img src="img/project1-img2.jpg" alt="QuickClip Snippet 2" class="w-full rounded-lg shadow cursor-pointer"
+                onclick="openLightbox(this)">
+              <img src="img/project1-img3.jpg" alt="QuickClip Snippet 3" class="w-full rounded-lg shadow cursor-pointer"
+                onclick="openLightbox(this)">
+              <img src="img/project1-img4.jpg" alt="QuickClip Snippet 4" class="w-full rounded-lg shadow cursor-pointer"
+                onclick="openLightbox(this)">
+              <img src="img/project1-img5.jpg" alt="QuickClip Snippet 5" class="w-full rounded-lg shadow cursor-pointer"
+                onclick="openLightbox(this)">
+              <img src="img/project1-img6.jpg" alt="QuickClip Snippet 6" class="w-full rounded-lg shadow cursor-pointer"
+                onclick="openLightbox(this)">
+            </div>
+          </div>
+
+          <!-- Toggle Button -->
+          <div class="relative">
+            <button onclick="toggleGallery('project-gallery-1')"
+              class="bg-gray-700 hover:bg-gray-600 text-gray-100 w-full py-3 rounded-b-lg transition-colors duration-300">
+              Show Images
+            </button>
           </div>
         </div>
 
-        <!-- Row 2: Project Gallery & Links -->
-        <div id="project-gallery-1" class="hidden-gallery opacity-0 transition-all duration-500 ease-in-out p-6">
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <img src="img/project1-img1.jpg" alt="QuickClip Snippet 1" class="w-full rounded-lg shadow cursor-pointer" onclick="openLightbox(this)">
-            <img src="img/project1-img2.jpg" alt="QuickClip Snippet 2" class="w-full rounded-lg shadow cursor-pointer" onclick="openLightbox(this)">
-            <img src="img/project1-img3.jpg" alt="QuickClip Snippet 3" class="w-full rounded-lg shadow cursor-pointer" onclick="openLightbox(this)">
-            <img src="img/project1-img4.jpg" alt="QuickClip Snippet 4" class="w-full rounded-lg shadow cursor-pointer" onclick="openLightbox(this)">
-            <img src="img/project1-img5.jpg" alt="QuickClip Snippet 5" class="w-full rounded-lg shadow cursor-pointer" onclick="openLightbox(this)">
-            <img src="img/project1-img6.jpg" alt="QuickClip Snippet 6" class="w-full rounded-lg shadow cursor-pointer" onclick="openLightbox(this)">
-          </div>
-        </div>
+        <div class="bg-gray-800 rounded-lg shadow-lg mb-10">
+          <!-- Row 1: Project Header -->
+          <div class="flex flex-col md:flex-row items-center p-6">
+            <!-- Column 1: Project Logo, Title, and Website Link (Aligned Vertically) -->
+            <div class="md:w-2/4 flex flex-col text-center justify-center items-center mb-4 md:mb-0 gap-2">
+              <!-- Project Logo -->
+              <img src="img/project2-logo.png" alt="Word Search Maker Logo" class="w-1/3 shadow-lg mb-3">
 
-        <!-- Toggle Button -->
-        <div class="relative">
-          <button onclick="toggleGallery('project-gallery-1')"
-            class="bg-gray-700 hover:bg-gray-600 text-gray-100 w-full py-3 rounded-b-lg transition-colors duration-300">
-            Show Images
-          </button>
+              <!-- Project Title -->
+              <h3 class="text-2xl font-bold text-gray-100">Word Search Puzzle Generator Tool</h3>
+
+              <!-- Project Website Link -->
+              <a href="https://wordsearchmaker.pro" target="_blank" class="text-yellow-400 hover:text-yellow-500 mt-3">
+                Checkout the tool
+              </a>
+            </div>
+
+            <!-- Column 2: Project Description -->
+            <div class="md:w-2/4">
+              <p class="text-gray-300 mt-2">
+                A powerful tool to generate custom word search puzzles with your own word lists. Easily download puzzles
+                in PDF format with no watermarks.
+              </p>
+              <p class="text-gray-300 mt-2">
+                Features: Generate multiple puzzles at once, customizable word lists, and downloadable PDFs. Perfect for
+                educators and puzzle enthusiasts.
+              </p>
+            </div>
+          </div>
+
+          <!-- Row 2: Project Gallery & Links -->
+          <div id="project-gallery-2" class="hidden-gallery opacity-0 transition-all duration-500 ease-in-out p-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <img src="img/project2-img1.png" alt="Word Search Maker Snippet 1"
+                class="w-full rounded-lg shadow cursor-pointer" onclick="openLightbox(this)">
+              <img src="img/project2-img2.png" alt="Word Search Maker Snippet 2"
+                class="w-full rounded-lg shadow cursor-pointer" onclick="openLightbox(this)">
+              <img src="img/project2-img3.png" alt="Word Search Maker Snippet 3"
+                class="w-full rounded-lg shadow cursor-pointer" onclick="openLightbox(this)">
+              <img src="img/project2-img4.png" alt="Word Search Maker Snippet 4"
+                class="w-full rounded-lg shadow cursor-pointer" onclick="openLightbox(this)">
+            </div>
+          </div>
+          
+          <!-- Toggle Button -->
+          <div class="relative">
+            <button onclick="toggleGallery('project-gallery-2')"
+              class="bg-gray-700 hover:bg-gray-600 text-gray-100 w-full py-3 rounded-b-lg transition-colors duration-300">
+              Show Images
+            </button>
+          </div>
         </div>
       </div>
 
-      <div class="bg-gray-800 rounded-lg shadow-lg mb-10">
-        <!-- Row 1: Project Header -->
-        <div class="flex flex-col md:flex-row items-center p-6">
-          <!-- Column 1: Project Logo, Title, and Website Link (Aligned Vertically) -->
-          <div class="md:w-2/4 flex flex-col text-center justify-center items-center mb-4 md:mb-0 gap-2">
-            <!-- Project Logo -->
-            <img src="img/project2-logo.png" alt="Word Search Maker Logo" class="w-2/4 shadow-lg mb-3">
+      <!-- More About Me Tab -->
+      <div id="more-about-tab" class="flex flex-col hidden">
+        <!-- Work Experience Section -->
+        <div class="bg-gray-800 rounded-lg shadow-lg mb-10">
+          <div class="p-6">
+            <h3 class="text-2xl font-bold text-yellow-400 mb-4">Work Experience</h3>
 
-            <!-- Project Title -->
-            <h3 class="text-4xl font-bold text-gray-100">Word Search Puzzle Generator Tool</h3>
+            <div class="flex flex-col gap-6">
+              <!-- Herald Logic: Platform Engineer -->
+              <div class="border border-gray-700 p-4 rounded-lg">
+                <h4 class="text-xl font-semibold text-gray-100">Herald Logic Pvt. Ltd. – Senior Platform Engineer</h4>
+                <p class="text-gray-400 mt-2">Oct 2021 – Nov 2024</p>
+                <ul class="list-disc list-inside text-gray-300 mt-2">
+                  <li>Led a team to enhance platform capabilities and worked with the solution team to define development strategies.</li>
+                  <li>Implemented security fixes based on vulnerability assessments (VAPT) to ensure platform stability.</li>
+                </ul>
+              </div>
 
-            <!-- Project Website Link -->
-            <a href="https://wordsearchmaker.pro" target="_blank" class="text-yellow-400 hover:text-yellow-500 mt-3">
-              Checkout the tool
-            </a>
-          </div>
-
-          <!-- Column 2: Project Description -->
-          <div class="md:w-2/4">
-            <p class="text-gray-300 mt-2">
-              A powerful tool to generate custom word search puzzles with your own word lists. Easily download puzzles
-              in PDF format with no watermarks.
-            </p>
-            <p class="text-gray-300 mt-2">
-              Features: Generate multiple puzzles at once, customizable word lists, and downloadable PDFs. Perfect for
-              educators and puzzle enthusiasts.
-            </p>
-          </div>
-        </div>
-
-        <!-- Row 2: Project Gallery & Links -->
-        <div id="project-gallery-2" class="hidden-gallery opacity-0 transition-all duration-500 ease-in-out p-6">
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <img src="img/project2-img1.png" alt="Word Search Maker Snippet 1" class="w-full rounded-lg shadow cursor-pointer" onclick="openLightbox(this)">
-            <img src="img/project2-img2.png" alt="Word Search Maker Snippet 2" class="w-full rounded-lg shadow cursor-pointer" onclick="openLightbox(this)">
-            <img src="img/project2-img3.png" alt="Word Search Maker Snippet 3" class="w-full rounded-lg shadow cursor-pointer" onclick="openLightbox(this)">
-            <img src="img/project2-img4.png" alt="Word Search Maker Snippet 4" class="w-full rounded-lg shadow cursor-pointer" onclick="openLightbox(this)">
+              <!-- Herald Logic: Product Developer -->
+              <div class="border border-gray-700 p-4 rounded-lg">
+                <h4 class="text-xl font-semibold text-gray-100">Herald Logic Pvt. Ltd. – Product Developer</h4>
+                <p class="text-gray-400 mt-2">Aug 2019 – Sep 2021</p>
+                <ul class="list-disc list-inside text-gray-300 mt-2">
+                  <li>Developed new features and fixed critical issues in the platform.</li>
+                  <li>Migrated application modules from legacy to modern platforms.</li>
+                  <li>Managed client upgrades and transitioned deployments to the latest platform.</li>
+                </ul>
+              </div>
+            </div>
           </div>
         </div>
 
-        <!-- Toggle Button -->
-        <div class="relative">
-          <button onclick="toggleGallery('project-gallery-2')"
-            class="bg-gray-700 hover:bg-gray-600 text-gray-100 w-full py-3 rounded-b-lg transition-colors duration-300">
-            Show Images
-          </button>
+        <!-- Education Section -->
+        <div class="bg-gray-800 rounded-lg shadow-lg mb-10">
+          <div class="p-6">
+            <h3 class="text-2xl font-bold text-yellow-400 mb-4">Education</h3>
+
+            <div class="flex flex-col gap-6">
+              <!-- Integrated MCA -->
+              <div class="border border-gray-700 p-4 rounded-lg">
+                <h4 class="text-xl font-semibold text-gray-100">Integrated Master of Computer Applications</h4>
+                <p class="text-gray-400 mt-2">Sri Sathya Sai Institute of Higher Learning, Andhra Pradesh</p>
+                <p class="text-gray-400 mt-2">2014 – 2019 | CGPA: 7.8</p>
+                <ul class="list-disc list-inside text-gray-300 mt-2">
+                  <li>Specialized coursework in Network Security, Cloud Computing, and Software Architecture.</li>
+                  <li>Active participant in Grama Seva activities and led the house handball team to victory.</li>
+                </ul>
+              </div>
+
+              <!-- Schooling -->
+              <div class="border border-gray-700 p-4 rounded-lg">
+                <h4 class="text-xl font-semibold text-gray-100">Schooling</h4>
+                <p class="text-gray-400 mt-2">Jawahar Navodaya Vidyalaya Bohani, Narsinghpur, Madhya Pradesh</p>
+                <p class="text-gray-400 mt-2">2007 – 2014</p>
+                <ul class="list-disc list-inside text-gray-300 mt-2">
+                  <li>Class XII: 75.4% (CBSE)</li>
+                  <li>Class X: CGPA 8.8</li>
+                  <li>Actively participated in sports and extracurricular activities.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -153,16 +248,45 @@
   </section>
 
   <!-- Contact Section -->
-  <section id="contact" class="py-16 bg-gray-900">
-    <div class="container mx-auto px-6 text-center">
-      <h2 class="text-3xl font-semibold text-gray-100 mb-6">Contact</h2>
-      <p class="text-gray-400 mb-4">I'm open to freelance work and collaborative projects. Feel free to reach out!</p>
-      <p class="text-gray-300">
-        Email: <a href="mailto:jitendrachadar.jc@gmail.com"
-          class="text-blue-400 hover:underline">jitendrachadar.jc@gmail.com</a>
-      </p>
+  <section id="contact" class="py-12 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-gray-300">
+    <div class="container mx-auto px-6 md:w-2/3 text-center">
+      <h2 class="text-4xl font-bold text-yellow-400 mb-6">Get In Touch</h2>
+      <p class="text-lg text-gray-400 mb-8">I’m open to freelance work and collaborative projects. Let’s connect!</p>
+
+      <!-- Contact Information -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- Gmail -->
+        <div class="bg-gray-800 rounded-lg shadow-lg p-6 flex flex-col items-center">
+          <img src="img/gmail-logo.png" alt="Gmail Logo" class="w-12 h-12 mb-4">
+          <h3 class="text-xl font-semibold text-gray-100 mb-2">Email Me</h3>
+          <a href="mailto:jitendrachadar.jc@gmail.com" class="text-blue-400 hover:underline text-sm">
+            jitendrachadar.jc@gmail.com
+          </a>
+        </div>
+
+        <!-- LinkedIn -->
+        <div class="bg-gray-800 rounded-lg shadow-lg p-6 flex flex-col items-center">
+          <img src="img/linkedin-logo.png" alt="LinkedIn Logo" class="w-12 h-12 mb-4">
+          <h3 class="text-xl font-semibold text-gray-100 mb-2">Connect on LinkedIn</h3>
+          <a href="https://www.linkedin.com/in/jitendrachadar/" target="_blank"
+            class="text-blue-400 hover:underline text-sm">
+            linkedin.com/in/jitendrachadar
+          </a>
+        </div>
+
+        <!-- GitHub -->
+        <div class="bg-gray-800 rounded-lg shadow-lg p-6 flex flex-col items-center">
+          <img src="img/github-logo.png" alt="GitHub Logo" class="w-12 h-12 mb-4">
+          <h3 class="text-xl font-semibold text-gray-100 mb-2">Follow on GitHub</h3>
+          <a href="https://github.com/jitendrachadar" target="_blank" class="text-blue-400 hover:underline text-sm">
+            github.com/jitendrachadar
+          </a>
+        </div>
+      </div>
     </div>
   </section>
+
+
 
   <!-- Footer -->
   <footer class="bg-gray-900 py-6">
@@ -172,8 +296,8 @@
   </footer>
 
   <div id="lightbox" class="fixed inset-0 bg-black bg-opacity-80 hidden flex items-center justify-center z-50">
-      <span class="absolute top-5 right-5 text-white text-3xl cursor-pointer" onclick="closeLightbox()">&times;</span>
-      <img id="lightbox-img" class="max-w-full max-h-full rounded shadow-lg">
+    <span class="absolute top-5 right-5 text-white text-3xl cursor-pointer" onclick="closeLightbox()">&times;</span>
+    <img id="lightbox-img" class="max-w-full max-h-full rounded shadow-lg">
   </div>
 
   <script>
@@ -190,19 +314,42 @@
       }
     }
 
-    function openLightbox(image) {
-        const lightbox = document.getElementById('lightbox');
-        const lightboxImg = document.getElementById('lightbox-img');
-        
-        lightboxImg.src = image.src;
-        lightbox.classList.remove('hidden');
-        lightbox.classList.add('open');
+    function toggleSection(fSection) {
+      const activeSections = document.querySelectorAll('h2.section-active');
+
+      activeSections.forEach(section => {
+        section.classList.remove('section-active');
+      });
+
+      const activeTabs = document.querySelectorAll('div.section-active');
+
+      activeTabs.forEach(tab => {
+        tab.classList.remove('section-active');
+        tab.classList.add('hidden');
+      });
+
+      fSection.classList.add('section-active');
+      let tabId = fSection.id + "-tab";
+      console.log("tab:" + tabId);
+      let fTab = document.getElementById(tabId);
+      fTab.classList.add('section-active');
+      fTab.classList.remove('hidden');
+
     }
-    
+
+    function openLightbox(image) {
+      const lightbox = document.getElementById('lightbox');
+      const lightboxImg = document.getElementById('lightbox-img');
+
+      lightboxImg.src = image.src;
+      lightbox.classList.remove('hidden');
+      lightbox.classList.add('open');
+    }
+
     function closeLightbox() {
-        const lightbox = document.getElementById('lightbox');
-        lightbox.classList.add('hidden');
-        lightbox.classList.remove('open');
+      const lightbox = document.getElementById('lightbox');
+      lightbox.classList.add('hidden');
+      lightbox.classList.remove('open');
     }
   </script>
 
