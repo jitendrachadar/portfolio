@@ -1,6 +1,6 @@
 import React from "react";
 
-const ProjectCard = ({ project }) => {
+const ProjectCard = ({ project, onDetailsClick }) => {
   return (
     <div className="bg-gray-800 rounded-lg shadow-lg overflow-hidden border border-gray-700">
       {project.project_logo.URL && (
@@ -16,16 +16,25 @@ const ProjectCard = ({ project }) => {
       <div className="p-6">
         <h3 className="text-xl font-semibold mb-4">{project.project_title}</h3>
         <p className="text-gray-400 mb-4">{project.description[0]}</p>
-        {project.link && (
-          <a
-            href={project.link}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-block bg-yellow-400 text-black font-bold py-2 px-4 rounded hover:bg-yellow-500"
+
+        <div className="flex flex-wrap gap-4">
+          {project.link && (
+            <a
+              href={project.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-yellow-400 text-black font-bold py-2 px-4 rounded hover:bg-yellow-500"
+            >
+              Visit Website
+            </a>
+          )}
+          <button
+            onClick={onDetailsClick}
+            className="border border-gray-700 hover:bg-gray-900 text-white font-bold py-2 px-4 rounded"
           >
-            Visit Website
-          </a>
-        )}
+            More Details
+          </button>
+        </div>
       </div>
     </div>
   );
