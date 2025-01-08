@@ -32,7 +32,7 @@ const App = () => {
             className="w-32 h-32 rounded-full mx-auto mb-4"
           />
           <h1 className="text-4xl font-bold text-center text-gray-100">
-            Jitendra Chadar
+            Jitendra Chadar - Testing
           </h1>
           <p className="text-lg mt-2 text-center text-gray-400">
             Software Developer
