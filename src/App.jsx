@@ -32,7 +32,7 @@ const App = () => {
             className="w-32 h-32 rounded-full mx-auto mb-4"
           />
           <h1 className="text-4xl font-bold text-center text-gray-100">
-            Jitendra Chadar - Testing
+            Jitendra Chadar
           </h1>
           <p className="text-lg mt-2 text-center text-gray-400">
             Software Developer
@@ -43,18 +43,18 @@ const App = () => {
             building productivity tools and Chrome extensions.
           </p>
 
-          <div className="flex mt-6 rounded-full border border-yellow-400 bg-gray-800">
+          <div className="flex mt-6 rounded-full border border-sky-600 bg-gray-800">
             <button
-              className={`w-full py-2 text-white hover:bg-yellow-400 hover:text-black rounded-l-full transition-colors duration-100 ${
-                activeSection === "projects" ? "bg-yellow-400 text-black" : ""
+              className={`w-full py-2 text-white hover:bg-sky-600 hover:text-black rounded-l-full transition-colors duration-100 ${
+                activeSection === "projects" ? "bg-sky-600 text-black" : ""
               }`}
               onClick={() => handleNavigation("projects")}
             >
               Projects
             </button>
             <button
-              className={`w-full py-2 text-white border-l border-gray-700 hover:bg-yellow-400 hover:text-black rounded-r-full transition-colors duration-100 ${
-                activeSection === "about" ? "bg-yellow-400 text-black" : ""
+              className={`w-full py-2 text-white border-l border-gray-700 hover:bg-sky-600 hover:text-black rounded-r-full transition-colors duration-100 ${
+                activeSection === "about" ? "bg-sky-600 text-black" : ""
               }`}
               onClick={() => handleNavigation("about")}
             >

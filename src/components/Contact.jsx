@@ -26,7 +26,7 @@ const Contact = ({ activeSection }) => {
         }`}
       >
         <h2
-          className={`font-bold text-yellow-400 mb-4 ${
+          className={`font-bold text-sky-500 mb-4 ${
             activeSection === "home" ? "text-2xl mt-6" : ""
           }`}
         >

@@ -23,7 +23,7 @@ const ProjectCard = ({ project, onDetailsClick }) => {
               href={project.link}
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-yellow-400 text-black font-bold py-2 px-4 rounded hover:bg-yellow-500"
+              className="bg-sky-600 text-black font-bold py-2 px-4 rounded hover:bg-sky-700"
             >
               Visit Website
             </a>

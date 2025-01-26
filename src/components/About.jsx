@@ -20,14 +20,14 @@ const About = () => {
   return (
     <section className="bg-slate-800 text-white p-6">
       <div className="max-w-7xl mx-auto">
-        <h2 className="text-3xl font-bold text-yellow-400 mb-8">
+        <h2 className="text-3xl font-bold text-sky-500 mb-8">
           More About Me
         </h2>
 
         {aboutMe.map((section, index) => (
           <div key={index} className="mb-10">
             {/* Section Title */}
-            <h3 className="text-2xl font-bold text-yellow-400 mb-4">
+            <h3 className="text-2xl font-bold text-sky-600 mb-4">
               {section.title}
             </h3>
 
