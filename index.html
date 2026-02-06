@@ -1,14 +1,1008 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="keywords"
-    content="Software Developer, React Developer, Next Js Developer, Java Developer, PLSQL Developer">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Jitendra Chadar</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jitendra Chadar | Senior Platform Engineer Portfolio</title>
+  <meta name="description"
+    content="Portfolio of Jitendra Chadar, a Senior Platform Engineer with 5+ years of experience in Java, Spring Boot, and Web Development. Specialized in high-performance digital solutions and platform security.">
+  <meta name="keywords"
+    content="Jitendra Chadar, Senior Platform Engineer, Java Developer, Spring Boot, Portfolio, Software Architecture, Web Development">
+  <link rel="canonical" href="https://jitendrachadar.github.io/portfolio/">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://jitendrachadar.github.io/portfolio/">
+  <meta property="og:title" content="Jitendra Chadar | Senior Platform Engineer Portfolio">
+  <meta property="og:description"
+    content="Portfolio of Jitendra Chadar, a Senior Platform Engineer with 5+ years of experience in Java, Spring Boot, and Web Development.">
+  <meta property="og:image" content="https://jitendrachadar.github.io/portfolio/img/portfolio/profile-pic.png">
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://jitendrachadar.github.io/portfolio/">
+  <meta property="twitter:title" content="Jitendra Chadar | Senior Platform Engineer Portfolio">
+  <meta property="twitter:description"
+    content="Portfolio of Jitendra Chadar, a Senior Platform Engineer with 5+ years of experience in Java, Spring Boot, and Web Development.">
+  <meta property="twitter:image" content="https://jitendrachadar.github.io/portfolio/img/portfolio/profile-pic.png">
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Jitendra Chadar",
+      "url": "https://jitendrachadar.github.io/portfolio/",
+      "image": "https://jitendrachadar.github.io/portfolio/img/portfolio/profile-pic.png",
+      "jobTitle": "Senior Platform Engineer",
+      "worksFor": {
+        "@type": "Organization",
+        "name": "Herald Logic Pvt. Ltd."
+      },
+      "sameAs": [
+        "https://linkedin.com/in/jitendrachadar",
+        "https://github.com/jitendrachadar"
+      ]
+    }
+    </script>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap"
+    rel="stylesheet">
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- AOS Library -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+  <!-- 3D & Animation Libraries -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollTrigger.min.js"></script>
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: {
+              50: '#f0f7ff',
+              100: '#e0effe',
+              500: '#3b82f6',
+              600: '#2563eb',
+              700: '#1d4ed8',
+              900: '#1e3a8a',
+            },
+            accent: '#fbbf24', // Amber/Yellow
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            heading: ['Outfit', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      background: #020617;
+      /* Solid deep blue fallback */
+      min-height: 100vh;
+      margin: 0;
+      overflow-x: hidden;
+    }
+
+    #three-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    .glass {
+      background: rgba(15, 23, 42, 0.6);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
+    }
+
+    .glass-opaque {
+      background: rgba(15, 23, 42, 0.92);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.6);
+    }
+
+    .glass-hover:hover {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .text-gradient {
+      background: linear-gradient(to right, #60a5fa, #a78bfa);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .animate-float {
+      animation: float 6s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(0px);
+      }
+
+      50% {
+        transform: translateY(-15px);
+      }
+
+      100% {
+        transform: translateY(0px);
+      }
+    }
+
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    .custom-scrollbar::-webkit-scrollbar-track {
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+    }
+
+    .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    .nav-link {
+      position: relative;
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: -4px;
+      left: 0;
+      background-color: #fbbf24;
+      transition: width 0.3s ease;
+    }
+
+    .nav-link:hover::after {
+      width: 100%;
+    }
+  </style>
+</head>
+
+<body
+  class="text-gray-300 antialiased selection:bg-primary-500/30 selection:text-white custom-scrollbar overflow-x-hidden">
+
+  <canvas id="three-canvas"></canvas>
+
+  <!-- Navbar -->
+  <nav class="fixed w-full z-50 px-6 py-6 flex justify-center">
+    <div class="glass max-w-6xl w-full px-8 py-3 rounded-full flex justify-between items-center">
+      <a href="#" class="text-xl font-bold font-heading text-white tracking-widest">JC <span
+          class="text-accent">.</span></a>
+      <div class="hidden md:flex space-x-6 text-sm font-medium">
+        <a href="#about" class="nav-link hover:text-white transition">About</a>
+        <a href="#experience" class="nav-link hover:text-white transition">Experience</a>
+        <a href="#work" class="nav-link hover:text-white transition">Client Work</a>
+        <a href="#apps" class="nav-link hover:text-white transition">Tools & Apps</a>
+        <a href="#education" class="nav-link hover:text-white transition">Education</a>
+        <a href="#contact" class="nav-link hover:text-white transition">Contact</a>
+      </div>
+      <a href="mailto:jitendrachadar.jc@gmail.com"
+        class="text-xs font-bold uppercase tracking-widest px-5 py-2 rounded-full border border-white/10 hover:bg-white/5 transition">Hire
+        Me</a>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section id="about" class="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
+    <!-- Abstract Background Circles -->
+    <div class="absolute top-1/4 -left-20 w-96 h-96 bg-primary-600/10 rounded-full blur-[100px]"></div>
+    <div class="absolute bottom-1/4 -right-20 w-96 h-96 bg-cyan-600/10 rounded-full blur-[100px]"></div>
+
+    <div class="container mx-auto max-w-8xl px-6 grid md:grid-cols-2 gap-12 items-center relative z-10">
+      <div data-aos="fade-right">
+        <span
+          class="inline-block px-4 py-1.5 rounded-full glass text-accent text-xs font-bold uppercase tracking-widest mb-6">Senior
+          Platform Engineer</span>
+        <h1 class="text-5xl lg:text-7xl font-bold font-heading text-white mb-6 leading-tight">
+          Engineering <br> <span class="text-gradient">Robust Systems</span>
+        </h1>
+        <p class="text-lg text-gray-400 max-w-md mb-10 leading-relaxed">
+          Senior Platform Engineer with 5+ years of expertise in back-end mastery, platform security, and
+          high-performance digital solutions.
+        </p>
+        <div class="flex flex-wrap gap-4">
+          <a href="#experience"
+            class="px-8 py-3.5 rounded-xl bg-primary-600 hover:bg-primary-700 text-white font-bold transition shadow-lg shadow-primary-900/40">View
+            Experience</a>
+          <div class="flex gap-4">
+            <a href="https://github.com/jitendrachadar" target="_blank"
+              class="p-3.5 rounded-xl glass glass-hover transition">
+              <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                <path
+                  d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+              </svg>
+            </a>
+            <a href="https://linkedin.com/in/jitendrachadar" target="_blank"
+              class="p-3.5 rounded-xl glass glass-hover transition text-blue-400">
+              <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                <path
+                  d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.238 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.784 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="relative flex justify-center" data-aos="fade-left">
+        <div class="absolute -z-10 w-[120%] h-[120%] bg-white/5 rounded-full blur-3xl scale-75 animate-pulse"></div>
+        <div class="relative p-2 glass rounded-full animate-float">
+          <img src="img/portfolio/profile-pic.png" alt="Jitendra Chadar"
+            class="w-64 h-64 lg:w-80 lg:h-80 rounded-full object-cover">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Experience Section -->
+  <section id="experience" class="py-24 relative overflow-hidden bg-slate-950/80">
+    <div class="container mx-auto px-6 max-w-6xl">
+      <h2 class="text-4xl font-bold text-white mb-16 font-heading text-center" data-aos="fade-up">Professional Journey
+      </h2>
+
+      <div class="grid md:grid-cols-2 gap-12">
+        <!-- Journey Text -->
+        <div data-aos="fade-right">
+          <h3 class="text-2xl font-bold text-white mb-8 border-l-4 border-accent pl-6 tracking-wide">Technical
+            Leadership</h3>
+          <p class="text-gray-400 mb-8 leading-relaxed text-lg">
+            Over 5 years of experience evolving from a Java backend engineer to a full-stack architect. Expertise in
+            platform security (VAPT), scalability benchmarks, and leading cross-functional development strategies.
+          </p>
+          <div class="space-y-6">
+            <div class="glass-opaque p-6 rounded-2xl border-l-4 border-primary-500 transition">
+              <h4 class="font-bold text-white">Security & Stability</h4>
+              <p class="text-sm text-gray-400 mt-1">Specialized in VAPT vulnerability fixes and robust platform
+                hardening for enterprise-scale applications.</p>
+            </div>
+            <div class="glass-opaque p-6 rounded-2xl border-l-4 border-primary-500 transition">
+              <h4 class="font-bold text-white">Full Stack Integration</h4>
+              <p class="text-sm text-gray-400 mt-1">Deep mastery in Java, Spring Boot, React, and PLSQL, bridging the
+                gap between data and design.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Timeline -->
+        <div class="relative border-l border-white/10 ml-4 pl-8 space-y-12" data-aos="fade-left">
+          <div class="relative">
+            <div
+              class="absolute -left-[41px] top-0 w-5 h-5 bg-primary-600 rounded-full border-4 border-slate-900 shadow-xl shadow-primary-500/50">
+            </div>
+            <span class="text-xs font-bold text-accent uppercase tracking-widest">Oct 2021 – Nov 2024</span>
+            <h4 class="text-xl font-bold text-white mt-2">Sr. Platform Engineer</h4>
+            <p class="text-sm text-gray-400 font-medium">Herald Logic Pvt. Ltd.</p>
+            <p class="text-sm text-gray-500 mt-4 leading-relaxed">Led core development strategies and implemented
+              critical performance benchmarks for the primary enterprise platform. Managed security audits and
+              architectural enhancements.</p>
+          </div>
+          <div class="relative">
+            <div class="absolute -left-[41px] top-0 w-5 h-5 bg-white/10 rounded-full border-4 border-slate-900"></div>
+            <span class="text-xs font-bold text-gray-500 uppercase tracking-widest">Aug 2019 – Sep 2021</span>
+            <h4 class="text-xl font-bold text-white mt-2">Product Developer</h4>
+            <p class="text-sm text-gray-400 font-medium">Herald Logic Pvt. Ltd.</p>
+            <p class="text-sm text-gray-500 mt-4 leading-relaxed">Migrated legacy modules to modern, scalable
+              architectures. Accelerated client deployments and delivered high-impact feature sets.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Client Work Section -->
+  <section id="work" class="py-24 relative">
+    <div class="container mx-auto px-6 max-w-6xl">
+      <h2 class="text-4xl font-bold text-white mb-16 font-heading text-center" data-aos="fade-up">Featured Client Work
+      </h2>
+
+      <div class="space-y-16">
+        <!-- Project 1: Avantika Care -->
+        <div class="glass-opaque rounded-3xl overflow-hidden group shadow-2xl" data-aos="zoom-in">
+          <div class="grid md:grid-cols-2">
+            <div
+              class="h-64 md:h-auto overflow-hidden bg-slate-800 flex items-center justify-center p-8 lg:p-12 relative group">
+              <img src="img/portfolio/avantika-care.png" alt="Avantika Gastro Care"
+                class="w-full h-full object-cover rounded-2xl shadow-2xl transform group-hover:scale-105 transition duration-700">
+              <div
+                class="absolute inset-0 bg-primary-900/40 opacity-0 group-hover:opacity-100 transition flex items-center justify-center pointer-events-none">
+                <span class="px-6 py-2 bg-white text-primary-900 font-bold rounded-full">Explore Project</span>
+              </div>
+            </div>
+            <div class="p-8 lg:p-12 flex flex-col justify-center">
+              <span class="text-accent text-xs font-bold uppercase tracking-widest mb-3">Professional Medical
+                Website</span>
+              <h3 class="text-3xl font-bold text-white mb-6">Avantika Gastro & Liver Care</h3>
+              <p class="text-gray-400 mb-8 leading-relaxed text-lg">
+                Designed and developed a premium digital profile for Dr. Manish Tiwari. Focused on accessibility,
+                high-conversion appointment booking, and world-class healthcare branding.
+              </p>
+              <a href="avantika-care/index.html" target="_blank"
+                class="inline-flex items-center text-primary-500 font-bold hover:text-primary-400 transition group/link">
+                Experience Live Site
+                <svg class="w-5 h-5 ml-2 transform group-hover/link:translate-x-1 transition" fill="none"
+                  stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3">
+                  </path>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 2: Advocate Devendra Malviya -->
+        <div class="glass-opaque rounded-3xl overflow-hidden group shadow-2xl" data-aos="zoom-in">
+          <div class="grid md:grid-cols-2">
+            <div
+              class="h-64 md:h-auto overflow-hidden bg-slate-800 flex items-center justify-center p-8 lg:p-12 relative group md:order-2">
+              <img src="img/portfolio/adv-devendra-malviya.png" alt="Advocate Devendra Malviya"
+                class="w-full h-full object-cover rounded-2xl shadow-2xl transform group-hover:scale-105 transition duration-700">
+              <div
+                class="absolute inset-0 bg-primary-900/40 opacity-0 group-hover:opacity-100 transition flex items-center justify-center pointer-events-none">
+                <span class="px-6 py-2 bg-white text-primary-900 font-bold rounded-full">Explore Project</span>
+              </div>
+            </div>
+            <div class="p-8 lg:p-12 flex flex-col justify-center md:order-1">
+              <span class="text-accent text-xs font-bold uppercase tracking-widest mb-3">Legal Professional
+                Profile</span>
+              <h3 class="text-3xl font-bold text-white mb-6">Advocate Devendra Malviya</h3>
+              <p class="text-gray-400 mb-8 leading-relaxed text-lg">
+                Comprehensive digital presence for a legal expert. Engineered for professional credibility, streamlined
+                client communication, and intuitive navigation of legal services.
+              </p>
+              <a href="advocate-devendra-malviya-kareli/index.html" target="_blank"
+                class="inline-flex items-center text-primary-500 font-bold hover:text-primary-400 transition group/link">
+                Experience Professional Site
+                <svg class="w-5 h-5 ml-2 transform group-hover/link:translate-x-1 transition" fill="none"
+                  stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3">
+                  </path>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Technical Product Suite Section -->
+  <section id="apps" class="py-32 bg-slate-950/80 relative overflow-hidden">
+    <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-600/5 rounded-full blur-[120px] -z-10"></div>
+    <div class="container mx-auto px-6 max-w-7xl">
+      <div class="text-center mb-24" data-aos="fade-up">
+        <h2 class="text-4xl lg:text-6xl font-black text-white font-heading tracking-tight mb-6">Engineering <span
+            class="text-gradient">Future-Ready</span> Products</h2>
+        <p class="text-gray-400 max-w-2xl mx-auto text-lg leading-relaxed">A detailed showcase of engineering-led
+          products designed for scalability, performance, and user-centric problem solving.</p>
+      </div>
+
+      <div class="space-y-32">
+        <!-- Project 1: MockSensei -->
+        <div class="grid lg:grid-cols-12 gap-16 items-center" data-aos="fade-up">
+          <div class="lg:col-span-7">
+            <div class="gallery-container grid grid-cols-2 gap-4">
+              <div
+                class="aspect-video glass-opaque rounded-2xl overflow-hidden hover:scale-[1.02] transition duration-500 shadow-2xl">
+                <img src="/img/portfolio/mocksensei-1.png" alt="Test Engine"
+                  class="w-full h-full object-cover opacity-60 hover:opacity-100 transition duration-500">
+              </div>
+              <div
+                class="aspect-square glass rounded-2xl overflow-hidden hover:scale-[1.02] transition duration-500 shadow-2xl mt-8">
+                <img src="/img/portfolio/mocksensei-2.png" alt="Calendar View"
+                  class="w-full h-full object-cover opacity-60 hover:opacity-100 transition duration-500">
+              </div>
+              <div
+                class="aspect-square glass rounded-2xl overflow-hidden hover:scale-[1.02] transition duration-500 shadow-2xl -mt-8">
+                <img src="/img/portfolio/mocksensei-3.png" alt="Doc Tool"
+                  class="w-full h-full object-cover opacity-60 hover:opacity-100 transition duration-500">
+              </div>
+              <div
+                class="aspect-video glass-opaque rounded-2xl overflow-hidden hover:scale-[1.02] transition duration-500 shadow-2xl">
+                <img src="/img/portfolio/mocksensei-4.png" alt="Logic Games"
+                  class="w-full h-full object-cover opacity-60 hover:opacity-100 transition duration-500">
+              </div>
+            </div>
+          </div>
+          <div class="lg:col-span-5">
+            <div class="flex items-center gap-3 mb-6">
+              <span
+                class="px-3 py-1 rounded bg-cyan-500/10 text-cyan-400 text-[10px] font-bold uppercase tracking-widest border border-cyan-500/20">AI
+                Education Hub</span>
+              <span class="text-gray-500 text-xs font-bold uppercase tracking-widest font-heading">Next.js • LangChain •
+                Tailwind</span>
+            </div>
+            <h3 class="text-4xl font-bold text-white mb-6">MockSensei</h3>
+            <p class="text-gray-400 text-lg mb-10 leading-relaxed">
+              An AI-powered preparation ecosystem designed for Indian Government job aspirants.
+              MockSensei serves as a technical study hub, leveraging Large Language Models to simulate real-world
+              testing environments.
+            </p>
+            <div class="space-y-6 mb-10">
+              <div class="flex gap-4">
+                <div
+                  class="w-8 h-8 rounded-lg bg-cyan-500/10 flex items-center justify-center shrink-0 border border-cyan-500/20">
+                  <svg class="w-4 h-4 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                </div>
+                <div>
+                  <h4 class="font-bold text-white text-sm">Adaptive AI Test Engine</h4>
+                  <p class="text-xs text-gray-500 mt-1">Dynamic practice tests generated through AI for Banking,
+                    Teaching, and Regulatory exams.</p>
+                </div>
+              </div>
+              <div class="flex gap-4">
+                <div
+                  class="w-8 h-8 rounded-lg bg-cyan-500/10 flex items-center justify-center shrink-0 border border-cyan-500/20">
+                  <svg class="w-4 h-4 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                </div>
+                <div>
+                  <h4 class="font-bold text-white text-sm">Vacancy Intelligence</h4>
+                  <p class="text-xs text-gray-500 mt-1">Integrated calendar view providing real-time updates on upcoming
+                    government openings.</p>
+                </div>
+              </div>
+              <div class="flex gap-4">
+                <div
+                  class="w-8 h-8 rounded-lg bg-cyan-500/10 flex items-center justify-center shrink-0 border border-cyan-500/20">
+                  <svg class="w-4 h-4 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                </div>
+                <div>
+                  <h4 class="font-bold text-white text-sm">Automated Doc Builder</h4>
+                  <p class="text-xs text-gray-500 mt-1">Accuracy-focused tool assisting candidates in application
+                    document preparation.</p>
+                </div>
+              </div>
+            </div>
+            <a href="https://mocksensei.com" target="_blank"
+              class="inline-flex items-center text-cyan-400 font-bold hover:text-cyan-300 transition group/link underline decoration-cyan-500/30 underline-offset-8">
+              Explore MockSensei
+              <svg class="w-4 h-4 ml-2 group-hover/link:translate-x-2 transition" fill="none" stroke="currentColor"
+                viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3">
+                </path>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Project 2: StoredIn ERP -->
+        <div class="grid lg:grid-cols-12 gap-16 items-center" data-aos="fade-up">
+          <div class="lg:col-span-5 order-2 lg:order-1">
+            <div class="flex items-center gap-3 mb-6">
+              <span
+                class="px-3 py-1 rounded bg-emerald-500/10 text-emerald-400 text-[10px] font-bold uppercase tracking-widest border border-emerald-500/20">ERP
+                Ecosystem</span>
+              <span class="text-gray-500 text-xs font-bold uppercase tracking-widest font-heading">Next.js • Tailwind
+                CSS</span>
+            </div>
+            <h3 class="text-4xl font-bold text-white mb-6">StoredIn ERP</h3>
+            <p class="text-gray-400 text-lg mb-10 leading-relaxed">
+              A smart, multi-tenant ERP system engineered for the needs of small-to-medium enterprise owners.
+              Features a high-concurrency architecture that manages the entire lifecycle of retail operations in one
+              hub.
+            </p>
+            <div class="space-y-6 mb-10">
+              <div class="flex gap-4">
+                <div
+                  class="w-8 h-8 rounded-lg bg-emerald-500/10 flex items-center justify-center shrink-0 border border-emerald-500/20">
+                  <svg class="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                </div>
+                <div>
+                  <h4 class="font-bold text-white text-sm">All-in-One Dashboard</h4>
+                  <p class="text-xs text-gray-500 mt-1">Unified view for product cycles, automated sales logs, and
+                    purchase tracking.</p>
+                </div>
+              </div>
+              <div class="flex gap-4">
+                <div
+                  class="w-8 h-8 rounded-lg bg-emerald-500/10 flex items-center justify-center shrink-0 border border-emerald-500/20">
+                  <svg class="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                </div>
+                <div>
+                  <h4 class="font-bold text-white text-sm">POS Infrastructure</h4>
+                  <p class="text-xs text-gray-500 mt-1">Responsive Point of Sale system optimized for rapid billing
+                    across any device.</p>
+                </div>
+              </div>
+              <div class="flex gap-4">
+                <div
+                  class="w-8 h-8 rounded-lg bg-emerald-500/10 flex items-center justify-center shrink-0 border border-emerald-500/20">
+                  <svg class="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                </div>
+                <div>
+                  <h4 class="font-bold text-white text-sm">Multi-Store Scaling</h4>
+                  <p class="text-xs text-gray-500 mt-1">Architected to handle multiple shop locations under a single
+                    secure administrative account.</p>
+                </div>
+              </div>
+            </div>
+            <a href="https://stored-in.vercel.app" target="_blank"
+              class="inline-flex items-center text-emerald-400 font-bold hover:text-emerald-300 transition group/link underline decoration-emerald-500/30 underline-offset-8">
+              Launch ERP Dashboard
+              <svg class="w-4 h-4 ml-2 group-hover/link:translate-x-2 transition" fill="none" stroke="currentColor"
+                viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3">
+                </path>
+              </svg>
+            </a>
+          </div>
+          <div class="lg:col-span-7 order-1 lg:order-2">
+            <div class="gallery-container grid grid-cols-2 gap-4">
+              <div
+                class="aspect-square glass-opaque rounded-2xl overflow-hidden hover:scale-[1.02] transition duration-500 shadow-2xl">
+                <img src="https://placehold.co/400x400/064e3b/10b981?text=ERP+Overview" alt="Dashboard"
+                  class="w-full h-full object-cover opacity-60 hover:opacity-100 transition duration-500">
+              </div>
+              <div
+                class="aspect-video glass rounded-2xl overflow-hidden hover:scale-[1.02] transition duration-500 shadow-2xl mt-12">
+                <img src="https://placehold.co/800x450/064e3b/10b981?text=POS+System" alt="POS"
+                  class="w-full h-full object-cover opacity-60 hover:opacity-100 transition duration-500">
+              </div>
+              <div
+                class="aspect-video glass rounded-2xl overflow-hidden hover:scale-[1.02] transition duration-500 shadow-2xl -mt-12">
+                <img src="https://placehold.co/800x450/064e3b/10b981?text=Inventory+Flow" alt="Inventory"
+                  class="w-full h-full object-cover opacity-60 hover:opacity-100 transition duration-500">
+              </div>
+              <div
+                class="aspect-square glass rounded-2xl overflow-hidden hover:scale-[1.02] transition duration-500 shadow-2xl">
+                <img src="https://placehold.co/400x400/064e3b/10b981?text=Staff+Panel" alt="Staff Management"
+                  class="w-full h-full object-cover opacity-60 hover:opacity-100 transition duration-500">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 3: WordSearchMaker -->
+        <div class="grid lg:grid-cols-12 gap-16 items-center" data-aos="fade-up">
+          <div class="lg:col-span-7">
+            <div class="gallery-container grid grid-cols-2 gap-4">
+              <div
+                class="aspect-video glass-opaque rounded-2xl overflow-hidden hover:scale-[1.02] transition duration-500 shadow-2xl">
+                <img src="https://placehold.co/800x450/1e293b/60a5fa?text=WordSearchMaker+Dashboard"
+                  alt="WordSearchMaker UI"
+                  class="w-full h-full object-cover opacity-60 hover:opacity-100 transition duration-500">
+              </div>
+              <div
+                class="aspect-square glass rounded-2xl overflow-hidden hover:scale-[1.02] transition duration-500 shadow-2xl mt-8">
+                <img src="https://placehold.co/400x400/1e293b/60a5fa?text=Puzzle+Config" alt="Grid Logic"
+                  class="w-full h-full object-cover opacity-60 hover:opacity-100 transition duration-500">
+              </div>
+              <div
+                class="aspect-square glass rounded-2xl overflow-hidden hover:scale-[1.02] transition duration-500 shadow-2xl -mt-8">
+                <img src="https://placehold.co/400x400/1e293b/60a5fa?text=PDF+Export" alt="Export Output"
+                  class="w-full h-full object-cover opacity-60 hover:opacity-100 transition duration-500">
+              </div>
+              <div
+                class="aspect-video glass-opaque rounded-2xl overflow-hidden hover:scale-[1.02] transition duration-500 shadow-2xl">
+                <img src="https://placehold.co/800x450/1e293b/60a5fa?text=Bulk+Generation" alt="Batch Processing"
+                  class="w-full h-full object-cover opacity-60 hover:opacity-100 transition duration-500">
+              </div>
+            </div>
+          </div>
+          <div class="lg:col-span-5">
+            <div class="flex items-center gap-3 mb-6">
+              <span
+                class="px-3 py-1 rounded bg-blue-500/10 text-blue-400 text-[10px] font-bold uppercase tracking-widest border border-blue-500/20">Active
+                Product</span>
+              <span class="text-gray-500 text-xs font-bold uppercase tracking-widest font-heading">PHP • JS • CSS</span>
+            </div>
+            <h3 class="text-4xl font-bold text-white mb-6">WordSearchMaker</h3>
+            <p class="text-gray-400 text-lg mb-10 leading-relaxed">
+              A high-performance algorithmic tool designed for educators and parents to engineer complex word search
+              puzzles with ease.
+              Built to solve the inefficiency of manual puzzle creation, it leverages sophisticated grid-mapping logic
+              for instant results.
+            </p>
+            <div class="space-y-6 mb-10">
+              <div class="flex gap-4">
+                <div
+                  class="w-8 h-8 rounded-lg bg-blue-500/10 flex items-center justify-center shrink-0 border border-blue-500/20">
+                  <svg class="w-4 h-4 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                </div>
+                <div>
+                  <h4 class="font-bold text-white text-sm">Easy Customization</h4>
+                  <p class="text-xs text-gray-500 mt-1">Granular control over headings, subheadings, and personalized
+                    terminology lists.</p>
+                </div>
+              </div>
+              <div class="flex gap-4">
+                <div
+                  class="w-8 h-8 rounded-lg bg-blue-500/10 flex items-center justify-center shrink-0 border border-blue-500/20">
+                  <svg class="w-4 h-4 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                </div>
+                <div>
+                  <h4 class="font-bold text-white text-sm">Bulk Generation</h4>
+                  <p class="text-xs text-gray-500 mt-1">Generate multiple unique puzzle variations in a single compute
+                    cycle.</p>
+                </div>
+              </div>
+              <div class="flex gap-4">
+                <div
+                  class="w-8 h-8 rounded-lg bg-blue-500/10 flex items-center justify-center shrink-0 border border-blue-500/20">
+                  <svg class="w-4 h-4 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                </div>
+                <div>
+                  <h4 class="font-bold text-white text-sm">PDF Export Pipeline</h4>
+                  <p class="text-xs text-gray-500 mt-1">Automated conversion to print-ready PDF formats with layout
+                    preservation.</p>
+                </div>
+              </div>
+            </div>
+            <a href="https://wordsearchmaker.pro" target="_blank"
+              class="inline-flex items-center text-blue-400 font-bold hover:text-blue-300 transition group/link underline decoration-blue-500/30 underline-offset-8">
+              Visit wordsearchmaker.pro
+              <svg class="w-4 h-4 ml-2 group-hover/link:translate-x-2 transition" fill="none" stroke="currentColor"
+                viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3">
+                </path>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Education Section -->
+  <section id="education" class="py-24 relative overflow-hidden">
+    <div class="container mx-auto px-6 max-w-4xl">
+      <h2 class="text-4xl font-bold text-white mb-16 font-heading text-center" data-aos="fade-up">Educational Foundation
+      </h2>
+
+      <div class="space-y-8">
+        <!-- University -->
+        <div class="glass-opaque p-10 rounded-3xl border-l-8 border-primary-600 transition" data-aos="fade-right">
+          <div class="flex flex-col md:flex-row justify-between md:items-center mb-6 gap-4">
+            <div>
+              <h3 class="text-2xl font-bold text-white tracking-wide">Integrated Master of Computer Applications (MCA)
+              </h3>
+              <p class="text-primary-400 font-semibold mt-1 text-lg">Sri Sathya Sai Institute of Higher Learning, Andhra
+                Pradesh</p>
+            </div>
+            <span class="px-6 py-2 glass rounded-full text-accent font-bold tracking-widest text-sm">2014 – 2019</span>
+          </div>
+          <div class="grid md:grid-cols-2 gap-8 items-start">
+            <div>
+              <p class="text-gray-400 leading-relaxed mb-4">Specialized in advanced architectures and systemic security.
+              </p>
+              <div class="flex gap-4 items-center">
+                <span class="text-4xl font-bold text-white">7.8</span>
+                <span class="text-xs uppercase tracking-widest text-gray-500">CGPA Overall</span>
+              </div>
+            </div>
+            <ul class="space-y-3">
+              <li class="flex items-center text-sm text-gray-400">
+                <svg class="w-5 h-5 mr-3 text-primary-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path>
+                </svg>
+                Network Security & Cloud Computing
+              </li>
+              <li class="flex items-center text-sm text-gray-400">
+                <svg class="w-5 h-5 mr-3 text-primary-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path>
+                </svg>
+                Community Service (Grama Seva)
+              </li>
+              <li class="flex items-center text-sm text-gray-400">
+                <svg class="w-5 h-5 mr-3 text-primary-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path>
+                </svg>
+                Handball Team Captaincy
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Schooling -->
+        <div class="glass-opaque p-10 rounded-3xl border-l-8 border-white/10 transition" data-aos="fade-left">
+          <div class="flex flex-col md:flex-row justify-between md:items-center mb-6 gap-4">
+            <div>
+              <h3 class="text-2xl font-bold text-white tracking-wide">Jawahar Navodaya Vidyalaya Bohani</h3>
+              <p class="text-gray-400 font-bold mt-1">Secondary & Senior Secondary Education</p>
+            </div>
+            <span class="px-6 py-2 glass rounded-full text-gray-500 font-bold tracking-widest text-sm">2007 –
+              2014</span>
+          </div>
+          <div class="flex flex-wrap gap-8">
+            <div>
+              <span class="block text-3xl font-bold text-white">75.4%</span>
+              <span class="text-xs uppercase tracking-widest text-gray-500">Class XII (CBSE)</span>
+            </div>
+            <div>
+              <span class="block text-3xl font-bold text-white">8.8</span>
+              <span class="text-xs uppercase tracking-widest text-gray-500">Class X CGPA</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats Bar -->
+  <section class="py-20 bg-black/80 border-y border-white/5">
+    <div class="container mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8 text-center" data-aos="fade-up">
+      <div>
+        <span class="block text-6xl font-black text-white mb-2 leading-none">5+</span>
+        <span class="text-xs uppercase tracking-widest text-primary-500 font-bold">Years Experience</span>
+      </div>
+      <div>
+        <span class="block text-6xl font-black text-white mb-2 leading-none">12+</span>
+        <span class="text-xs uppercase tracking-widest text-primary-500 font-bold">Systems Built</span>
+      </div>
+      <div>
+        <span class="block text-6xl font-black text-white mb-2 leading-none">99%</span>
+        <span class="text-xs uppercase tracking-widest text-primary-500 font-bold">Code Efficiency</span>
+      </div>
+      <div>
+        <span class="block text-6xl font-black text-white mb-2 leading-none">100%</span>
+        <span class="text-xs uppercase tracking-widest text-primary-500 font-bold">Reliability</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="py-24 relative overflow-hidden">
+    <div class="container mx-auto px-6 max-w-4xl text-center" data-aos="zoom-in">
+      <h2 class="text-4xl lg:text-6xl font-bold font-heading text-white mb-6 tracking-tight">Let's Engineering Your <br>
+        <span class="text-gradient">Core Vision</span>
+      </h2>
+      <p class="text-gray-400 mb-12 max-w-lg mx-auto text-lg leading-relaxed">Currently open to freelance collaborations
+        and senior-level technical leadership roles.</p>
+
+      <div class="grid md:grid-cols-3 gap-6 mb-16">
+        <!-- Gmail -->
+        <a href="mailto:jitendrachadar.jc@gmail.com"
+          class="p-8 glass-opaque rounded-3xl transition duration-500 flex flex-col items-center group">
+          <div
+            class="w-14 h-14 rounded-2xl bg-primary-600/10 flex items-center justify-center mb-6 group-hover:bg-primary-600 transition">
+            <svg class="w-7 h-7 text-primary-500 group-hover:text-white" fill="none" stroke="currentColor"
+              viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
+              </path>
+            </svg>
+          </div>
+          <span class="text-xs font-bold uppercase tracking-widest mb-2 text-primary-400">Email Me</span>
+          <span class="text-sm font-medium text-gray-300">jitendrachadar.jc@gmail.com</span>
+        </a>
+        <!-- LinkedIn -->
+        <a href="https://linkedin.com/in/jitendrachadar" target="_blank"
+          class="p-8 glass-opaque rounded-3xl transition duration-500 flex flex-col items-center group">
+          <div
+            class="w-14 h-14 rounded-2xl bg-blue-600/10 flex items-center justify-center mb-6 group-hover:bg-blue-600 transition">
+            <svg class="w-7 h-7 text-blue-500 group-hover:text-white" fill="currentColor" viewBox="0 0 24 24">
+              <path
+                d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.238 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.784 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+            </svg>
+          </div>
+          <span class="text-xs font-bold uppercase tracking-widest mb-2 text-blue-400">LinkedIn</span>
+          <span class="text-sm font-medium text-gray-300">in/jitendrachadar</span>
+        </a>
+        <!-- GitHub -->
+        <a href="https://github.com/jitendrachadar" target="_blank"
+          class="p-8 glass-opaque rounded-3xl transition duration-500 flex flex-col items-center group">
+          <div
+            class="w-14 h-14 rounded-2xl bg-white/10 flex items-center justify-center mb-6 group-hover:bg-white/90 transition">
+            <svg class="w-7 h-7 text-white group-hover:text-black" fill="currentColor" viewBox="0 0 24 24">
+              <path
+                d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+            </svg>
+          </div>
+          <span class="text-xs font-bold uppercase tracking-widest mb-2 text-gray-500">GitHub</span>
+          <span class="text-sm font-medium text-gray-300">@jitendrachadar</span>
+        </a>
+      </div>
+
+      <footer class="mt-20 pt-12 border-t border-white/5 opacity-40 text-xs font-bold uppercase tracking-[0.3em]">
+        &copy; <span id="year"></span> Jitendra Chadar &bull; Sr. Platform Engineer
+      </footer>
+    </div>
+  </section>
+
+  <!-- JS Logic -->
+  <script>
+    // --- AOS Initialization ---
+    AOS.init({
+      duration: 1200,
+      once: true,
+      mirror: false,
+      anchorPlacement: 'top-bottom'
+    });
+
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // --- Three.js Background Implementation ---
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+    const renderer = new THREE.WebGLRenderer({
+      canvas: document.querySelector('#three-canvas'),
+      antialias: true,
+      alpha: true
+    });
+
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+    // Create Particles (Digital Grid Vibes)
+    const particlesCount = 1500;
+    const positions = new Float32Array(particlesCount * 3);
+    const colors = new Float32Array(particlesCount * 3);
+
+    for (let i = 0; i < particlesCount * 3; i++) {
+      positions[i] = (Math.random() - 0.5) * 10;
+      colors[i] = Math.random();
+    }
+
+    const particlesGeometry = new THREE.BufferGeometry();
+    particlesGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+    particlesGeometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+
+    const particlesMaterial = new THREE.PointsMaterial({
+      size: 0.02,
+      vertexColors: true,
+      transparent: true,
+      opacity: 0.6,
+      blending: THREE.AdditiveBlending
+    });
+
+    const particlesMesh = new THREE.Points(particlesGeometry, particlesMaterial);
+    scene.add(particlesMesh);
+
+    // --- Add Floating 3D Primitives (Software Vibes) ---
+    const primitivesCount = 8;
+    const primitives = [];
+    const geoms = [
+      new THREE.BoxGeometry(0.3, 0.3, 0.3),
+      new THREE.OctahedronGeometry(0.3),
+      new THREE.TetrahedronGeometry(0.3)
+    ];
+
+    for (let i = 0; i < primitivesCount; i++) {
+      const geom = geoms[Math.floor(Math.random() * geoms.length)];
+      const mat = new THREE.MeshBasicMaterial({
+        color: 0x3b82f6,
+        wireframe: true,
+        transparent: true,
+        opacity: 0.3
+      });
+      const mesh = new THREE.Mesh(geom, mat);
+
+      mesh.position.set(
+        (Math.random() - 0.5) * 8,
+        (Math.random() - 0.5) * 8,
+        (Math.random() - 0.5) * 2
+      );
+
+      mesh.rotation.x = Math.random() * Math.PI;
+      mesh.rotation.y = Math.random() * Math.PI;
+
+      scene.add(mesh);
+      primitives.push(mesh);
+    }
+
+    camera.position.z = 3;
+
+    // Mouse Interactivity
+    let mouseX = 0;
+    let mouseY = 0;
+
+    document.addEventListener('mousemove', (event) => {
+      mouseX = (event.clientX / window.innerWidth - 0.5) * 0.5;
+      mouseY = (event.clientY / window.innerHeight - 0.5) * 0.5;
+    });
+
+    const animate = () => {
+      requestAnimationFrame(animate);
+
+      // Substantial but professional background movement
+      particlesMesh.rotation.y += 0.001;
+      particlesMesh.rotation.x += 0.0005;
+
+      // Animate Primitives
+      primitives.forEach((p, i) => {
+        p.rotation.x += 0.005;
+        p.rotation.y += 0.005;
+        p.position.y += Math.sin(Date.now() * 0.001 + i) * 0.002;
+      });
+
+      // React to mouse
+      gsap.to(particlesMesh.rotation, {
+        y: mouseX * 0.5,
+        x: -mouseY * 0.5,
+        duration: 2,
+        ease: "power2.out"
+      });
+
+      renderer.render(scene, camera);
+    };
+
+    animate();
+
+    // Handle Resize
+    window.addEventListener('resize', () => {
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+    });
+
+    // --- GSAP Entrances ---
+    gsap.from(".nav-link", {
+      y: -20,
+      opacity: 0,
+      duration: 1,
+      stagger: 0.1,
+      ease: "power4.out"
+    });
+
+    // Optimized smooth scroll offset handling
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href');
+        const targetElement = document.querySelector(targetId);
+
+        if (targetElement) {
+          const headerOffset = 100;
+          const elementPosition = targetElement.getBoundingClientRect().top;
+          const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+  </script>
+
+</body>
+
 </html>
